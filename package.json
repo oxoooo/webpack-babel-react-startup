@@ -5,6 +5,9 @@
   "description": "一个 Webpack + Babel + React 的模板",
   "main": "server.js",
   "scripts": {
+    "dev": "./node_modules/.bin/babel-node server.js",
+    "build": "./node_modules/.bin/webpack --config webpack.prod.js",
+    "clean": "rm -rf dist"
   },
   "repository": {
     "type": "git",
@@ -20,5 +23,16 @@
   "bugs": {
     "url": "https://github.com/oxoooo/webpack-babel-react-startup/issues"
   },
-  "homepage": "https://github.com/oxoooo/webpack-babel-react-startup#readme"
+  "homepage": "https://github.com/oxoooo/webpack-babel-react-startup#readme",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-plugin-transform-builtin-extend": "^1.1.2",
+    "babel-preset-env": "^1.5.2",
+    "express": "^4.15.3",
+    "html-webpack-plugin": "^2.28.0",
+    "webpack": "^2.6.1",
+    "webpack-dev-middleware": "^1.10.2",
+    "webpack-hot-middleware": "^2.18.0"
+  }
 }
