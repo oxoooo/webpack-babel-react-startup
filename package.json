@@ -1,0 +1,24 @@
+{
+  "name": "webpack-babel-react-startup",
+  "version": "1.0.0",
+  "private": true,
+  "description": "一个 Webpack + Babel + React 的模板",
+  "main": "server.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oxoooo/webpack-babel-react-startup.git"
+  },
+  "keywords": [
+    "webpack",
+    "babel",
+    "react"
+  ],
+  "author": "XiNGRZ <chenxingyu92@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oxoooo/webpack-babel-react-startup/issues"
+  },
+  "homepage": "https://github.com/oxoooo/webpack-babel-react-startup#readme"
+}
