@@ -59,3 +59,5 @@ new HtmlWebpackPlugin({
 ```
 
 `title` 是最后生成的 `index.html` 中的标题。详见 [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin)。
+
+如果需要增加其它额外的标签，可修改 `index.ejs`。

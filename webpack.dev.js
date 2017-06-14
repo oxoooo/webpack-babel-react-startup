@@ -32,7 +32,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: [ 'babel-loader' ],
+        use: [ 'react-hot-loader', 'babel-loader' ],
       },
       {
         test: /\.(scss|css)$/,
@@ -50,6 +50,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       title: 'Hello World',
+      template: 'index.ejs',
     }),
   ],
 
