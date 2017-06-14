@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const join = require('path').join;
 
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -9,6 +10,7 @@ module.exports = {
     main: [
       'webpack-hot-middleware/client',
       'babel-polyfill',
+      'normalize.css',
       './src/client.js',
     ],
   },
@@ -22,7 +24,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [ '.js' ]
+    extensions: [ '.js', '.css', '.scss' ]
   },
 
   module: {
@@ -32,12 +34,20 @@ module.exports = {
         exclude: /node_modules/,
         use: [ 'babel-loader' ],
       },
+      {
+        test: /\.(scss|css)$/,
+        use: [ 'style-loader', 'css-loader', 'postcss-loader', 'sass-loader' ],
+      },
     ]
   },
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
+    new ExtractTextPlugin({
+      filename: '[name]-[hash].css',
+      allChunks: true,
+    }),
     new HtmlWebpackPlugin({
       title: 'Hello World',
     }),

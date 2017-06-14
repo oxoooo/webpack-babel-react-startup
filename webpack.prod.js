@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const join = require('path').join;
 
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -8,6 +9,7 @@ module.exports = {
   entry: {
     main: [
       'babel-polyfill',
+      'normalize.css',
       './src/client.js',
     ],
   },
@@ -21,7 +23,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [ '.js' ]
+    extensions: [ '.js', '.css', '.scss' ]
   },
 
   module: {
@@ -30,6 +32,22 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: [ 'babel-loader' ],
+      },
+      {
+        test: /\.(scss|css)$/,
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                minimize: true,
+              },
+            },
+            { loader: 'postcss-loader' },
+            { loader: 'sass-loader' },
+          ],
+        }),
       },
     ]
   },
@@ -43,6 +61,10 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin({
       output: { comments: false },
       sourceMap: true,
+    }),
+    new ExtractTextPlugin({
+      filename: '[name]-[hash].css',
+      allChunks: true,
     }),
     new HtmlWebpackPlugin({
       title: 'Hello World',
