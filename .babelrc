@@ -2,10 +2,12 @@
   "presets": [
     "env",
     "react",
+    "stage-0",
   ],
   "plugins": [
     ["transform-builtin-extend", {
       "globals": ["Error", "Array"],
     }],
+    "transform-decorators-legacy",
   ],
 }
